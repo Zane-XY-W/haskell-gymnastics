@@ -6,12 +6,6 @@ import           System.IO
 readTxt :: IO()
 readTxt =  readFile "README.md" >>= putStrLn
 
-sumRange :: Int -> Int -> Int -> Int
-sumRange start end step = sumRange' start 0
-  where sumRange' s rs =
-          if s <= end
-             then sumRange' (s + step) (rs + s)
-             else rs
 
 
 filterLines :: Handle -> (String -> Bool) -> IO [String]

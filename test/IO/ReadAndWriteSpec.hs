@@ -4,28 +4,26 @@ import           Data.List
 import           IO.ReadAndWrite
 import           System.IO
 import           Test.Hspec
+import           System.Directory
 
 main :: IO ()
 main = hspec spec
 
 spec :: Spec
-spec = describe "Prac1" $ do
+spec = describe "ReadAndWrite" $ do
   describe "readTxt" $ do
     it "should print something" $ do
       readTxt
-  describe "sumRange" $ do
-    it "should sum range" $ do
-      sumRange 1 3 1 `shouldBe` 6
   describe "filterLines" $ do
     it " should return a list of TODOs" $ do
       handle <- openFile "README.md" ReadMode
       size <- fmap length $ filterLines handle (\x -> "TODO" `isPrefixOf` x)
-      size `shouldBe` 4
+      size `shouldBe` 0
       hClose handle
   describe "filterLines3" $ do
     it " should return a list of TODOs" $ do
       size <- fmap length $ filterLines3  "README.md" (\x -> "TODO" `isPrefixOf` x)
-      size `shouldBe` 6
+      size `shouldBe` 0
   describe "writeList" $ do
     it "should write content to new file" $ do
       handle <- openFile "new.txt" WriteMode
@@ -36,3 +34,4 @@ spec = describe "Prac1" $ do
       c <- countLines handle
       print c
       hClose handle
+      removeFile "new.txt"
