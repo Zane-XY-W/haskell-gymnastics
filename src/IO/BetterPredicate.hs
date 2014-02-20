@@ -1,13 +1,14 @@
+{-#LANGUAGE ScopedTypeVariables#-}
 module BetterPredicate where
-
-import System.IO(hClose, openFile, hFileSize, IOMode(..))
+import System.IO(hFileSize, IOMode(..), withFile)
 import System.FilePath()
 import System.Directory(Permissions(..), getPermissions, getModificationTime)
 import Control.Monad(filterM)
-import System.Time(ClockTime(..))
+import Data.Time
 import IO.RecursiveContents(getRecursiveContents)
+import Control.Exception
 
-type Predicate = FilePath -> Permissions -> Maybe Integer -> ClockTime -> Bool
+type Predicate = FilePath -> Permissions -> Maybe Integer -> UTCTime -> Bool
 
 betterFind :: Predicate -> FilePath -> IO [FilePath]
 betterFind p path = getRecursiveContents path >>= filterM check
@@ -18,7 +19,7 @@ betterFind p path = getRecursiveContents path >>= filterM check
           return (p path' perm size time)
 
 getFileSize :: FilePath -> IO (Maybe Integer)
-getFileSize path = handle ((\_ -> return Nothing)::SomeException -> IO Nothing) $
-  bracket (openFile path ReadMode) hClose $ \h -> do
+getFileSize path = handle (\(_::SomeException) -> return Nothing) $
+  withFile path ReadMode $ \h -> do
     size <- hFileSize h
-    return Just size
+    return (Just size)
