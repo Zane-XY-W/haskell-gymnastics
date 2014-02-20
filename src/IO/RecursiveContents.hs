@@ -1,4 +1,4 @@
-module RecursiveContents(getRecursiveContents) where
+module IO.RecursiveContents(getRecursiveContents) where
 import System.Directory(doesDirectoryExist, getDirectoryContents)
 import System.FilePath((</>))
 import Control.Monad(forM)
