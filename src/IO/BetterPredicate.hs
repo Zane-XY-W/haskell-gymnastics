@@ -1,12 +1,13 @@
-{-#LANGUAGE ScopedTypeVariables#-}
+{-# LANGUAGE ScopedTypeVariables #-}
 module BetterPredicate where
-import System.IO(hFileSize, IOMode(..), withFile)
-import System.FilePath()
-import System.Directory(Permissions(..), getPermissions, getModificationTime)
-import Control.Monad(filterM)
-import Data.Time
-import IO.RecursiveContents(getRecursiveContents)
-import Control.Exception
+import           Control.Exception
+import           Control.Monad        (filterM)
+import           Data.Time
+import           IO.RecursiveContents (getRecursiveContents)
+import           System.Directory     (Permissions (..), getModificationTime,
+                                       getPermissions)
+import           System.FilePath      ()
+import           System.IO            (IOMode (..), hFileSize, withFile)
 
 type Predicate = FilePath -> Permissions -> Maybe Integer -> UTCTime -> Bool
 
