@@ -1,6 +1,7 @@
 module IO.FoldDir where
 import           IO.ControledVisit
 import           System.FilePath
+import Data.Char
 
 -- Continue will do the dir check
 -- Skip will just goes to the next item
@@ -39,3 +40,14 @@ foldTree itr initSeed path
                                            status -> walk (unwrap status) names
                                   | otherwise -> walk seed' names
         walk seed _ = return (Continue seed)
+
+ -- Iterator a
+ -- the typevar a, the so called seed is [FilePath]
+atMostThreePics :: Iterator [FilePath]
+atMostThreePics paths info
+  | length paths == 3                                =  Done paths
+  | isDirectory info && takeFileName path == ".svn"  =  Skip paths
+  | extension `elem` [".jpg", ".png"]                =  Continue (path : paths)
+  | otherwise                                        =  Continue paths
+  where extension  =  map toLower (takeExtension path)
+        path       =  infoPath info

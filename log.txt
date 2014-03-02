@@ -1,0 +1,119 @@
+                                      19:15:10: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:10: Vim filetype: 'haskell', sanitized filetype: 'haskell'
+19:15:10: Checking if file is valid [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:10: Unsupported filetype: haskell
+19:15:10: Not a valid file, stopping processing
+19:15:10: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:10: Vim filetype: 'haskell', sanitized filetype: 'haskell'
+19:15:10: Checking if file is valid [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:10: Unsupported filetype: haskell
+19:15:10: Not a valid file, stopping processing
+19:15:10: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:10: Vim filetype: 'haskell', sanitized filetype: 'haskell'
+19:15:10: Checking if file is valid [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:10: Unsupported filetype: haskell
+19:15:10: Not a valid file, stopping processing
+19:15:14: ToggleWindow called
+19:15:14: CloseWindow called
+19:15:14: goto_win(): 3wincmd w, 0
+19:15:14: goto_win(): 3wincmd w, 1
+19:15:14: goto_win(): 2wincmd w, 1
+19:15:14: goto_win(): 3wincmd w, 1
+19:15:14: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/__Tagbar__]
+19:15:14: In Tagbar window, stopping processing
+19:15:14: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:14: Vim filetype: 'haskell', sanitized filetype: 'haskell'
+19:15:14: Checking if file is valid [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:14: Unsupported filetype: haskell
+19:15:14: Not a valid file, stopping processing
+19:15:14: goto_win(): 1wincmd w, 0
+19:15:14: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/NERD_tree_1]
+19:15:14: Vim filetype: 'nerdtree', sanitized filetype: 'nerdtree'
+19:15:14: Checking if file is valid [/Users/znw/workspace/haskell/haskell-gymnastics/NERD_tree_1]
+19:15:14: File not readable
+19:15:14: Not a valid file, stopping processing
+19:15:14: goto_win(): 2wincmd w, 0
+19:15:14: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:14: Vim filetype: 'haskell', sanitized filetype: 'haskell'
+19:15:14: Checking if file is valid [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:14: Unsupported filetype: haskell
+19:15:14: Not a valid file, stopping processing
+19:15:14: CloseWindow finished
+19:15:14: ToggleWindow called
+19:15:14: OpenWindow called with flags: ''
+19:15:14: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/__Tagbar__]
+19:15:14: Still opening window, stopping processing
+19:15:14: InitWindow called with autoclose: 0
+19:15:14: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/__Tagbar__]
+19:15:14: In Tagbar window, stopping processing
+19:15:14: InitWindow finished
+19:15:14: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:14: Vim filetype: 'haskell', sanitized filetype: 'haskell'
+19:15:14: Checking if file is valid [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:14: Unsupported filetype: haskell
+19:15:14: Not a valid file, stopping processing
+19:15:14: goto_win(): 3wincmd w, 0
+19:15:14: goto_win(): 3wincmd w, 0
+19:15:15: goto_win(): wincmd p, 0
+19:15:15: goto_win(): 3wincmd w, 1
+19:15:15: goto_win(): 3wincmd w, 1
+19:15:15: goto_win(): 2wincmd w, 1
+19:15:15: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:15: Vim filetype: 'haskell', sanitized filetype: 'haskell'
+19:15:15: Checking if file is valid [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:15: Unsupported filetype: haskell
+19:15:15: Not a valid file, stopping processing
+19:15:15: OpenWindow finished
+19:15:15: ToggleWindow finished
+19:15:15: ToggleWindow called
+19:15:15: CloseWindow called
+19:15:15: goto_win(): 3wincmd w, 0
+19:15:15: goto_win(): 3wincmd w, 1
+19:15:15: goto_win(): 2wincmd w, 1
+19:15:15: goto_win(): 3wincmd w, 1
+19:15:15: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/__Tagbar__]
+19:15:15: In Tagbar window, stopping processing
+19:15:15: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:15: Vim filetype: 'haskell', sanitized filetype: 'haskell'
+19:15:15: Checking if file is valid [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:15: Unsupported filetype: haskell
+19:15:15: Not a valid file, stopping processing
+19:15:15: goto_win(): 1wincmd w, 0
+19:15:15: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/NERD_tree_1]
+19:15:15: Vim filetype: 'nerdtree', sanitized filetype: 'nerdtree'
+19:15:15: Checking if file is valid [/Users/znw/workspace/haskell/haskell-gymnastics/NERD_tree_1]
+19:15:15: File not readable
+19:15:15: Not a valid file, stopping processing
+19:15:15: goto_win(): 2wincmd w, 0
+19:15:15: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:15: Vim filetype: 'haskell', sanitized filetype: 'haskell'
+19:15:15: Checking if file is valid [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:15: Unsupported filetype: haskell
+19:15:15: Not a valid file, stopping processing
+19:15:15: CloseWindow finished
+19:15:15: ToggleWindow called
+19:15:15: OpenWindow called with flags: ''
+19:15:15: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/__Tagbar__]
+19:15:15: Still opening window, stopping processing
+19:15:15: InitWindow called with autoclose: 0
+19:15:15: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/__Tagbar__]
+19:15:15: In Tagbar window, stopping processing
+19:15:15: InitWindow finished
+19:15:15: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:15: Vim filetype: 'haskell', sanitized filetype: 'haskell'
+19:15:15: Checking if file is valid [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:15: Unsupported filetype: haskell
+19:15:15: Not a valid file, stopping processing
+19:15:15: goto_win(): 3wincmd w, 0
+19:15:15: goto_win(): 3wincmd w, 0
+19:15:15: goto_win(): wincmd p, 0
+19:15:15: goto_win(): 3wincmd w, 1
+19:15:15: goto_win(): 3wincmd w, 1
+19:15:15: goto_win(): 2wincmd w, 1
+19:15:15: AutoUpdate called [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:15: Vim filetype: 'haskell', sanitized filetype: 'haskell'
+19:15:15: Checking if file is valid [/Users/znw/workspace/haskell/haskell-gymnastics/src/IO/FoldDir.hs]
+19:15:15: Unsupported filetype: haskell
+19:15:15: Not a valid file, stopping processing
+19:15:15: OpenWindow finished
+19:15:15: ToggleWindow finished
