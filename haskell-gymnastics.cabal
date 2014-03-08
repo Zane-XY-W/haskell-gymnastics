@@ -26,7 +26,8 @@ Library
                         regex-pcre-builtin >= 0.94.4,
                         time >= 1.4.0.1,
                         bytestring >= 0.10.0.2,
-                        regex-compat >= 0.95.1
+                        regex-compat >= 0.95.1,
+                        word8 >= 0.0.4
 
 Test-Suite spec
   Type:                 exitcode-stdio-1.0
