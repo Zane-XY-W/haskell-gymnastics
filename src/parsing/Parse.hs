@@ -36,7 +36,7 @@ parseThrough  parser input =
 -- | pa parser a, pb parser b, pn parser new
 -- call parse function on pa, and if succeed, pass it to pb, get a pn
 (==>) :: Parser a -- ^ parser of input type a
-      -> (a -> Parser b) -- ^  the reuslt of pa
+      -> (a -> Parser b) -- ^  a is the reuslt of pa
       -> Parser b
 pa ==> pb = Parser pn
   where pn inputState =
@@ -93,9 +93,12 @@ peekByte  = (fmap fst . LB.uncons . string) <$> finalParserState
 peekChar :: Parser (Maybe Char)
 peekChar = fmap word2Char <$> peekByte
 
-parseWhile:: (Word8 -> Bool)
-          -> Parser [Word8]
-parseWhile predicate =  peekByte ==> \r ->
+-- | takes a predicate, returns a Parser
+parseWhile :: (Word8 -> Bool)
+           -> Parser [Word8]
+parseWhile predicate =  peekByte ==> \r -> -- ^ r :: Maybe Word8, r is the result
     case fmap predicate r of
         Nothing -> identity []
         Just True -> parseByte ==> \b -> (b:) <$> parseWhile predicate
+
+
