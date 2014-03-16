@@ -27,7 +27,11 @@ Library
                         time >= 1.4.0.1,
                         bytestring >= 0.10.0.2,
                         regex-compat >= 0.95.1,
-                        word8 >= 0.0.4
+                        word8 >= 0.0.4,
+                        hamlet >= 1.1.9.2,
+                        xml-conduit >= 1.1.0.9,
+                        system-filepath >= 0.4.8,
+                        HUnit >= 1.2.5.2
 
 Test-Suite spec
   Type:                 exitcode-stdio-1.0
