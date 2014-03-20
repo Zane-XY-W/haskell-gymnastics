@@ -24,10 +24,12 @@ right (Fork l r, c) = (r, R l c)
 top :: Tree a -> Loc a
 top t = (t, Top)
 
--- | up means moves hole to a upper level,
--- if the hole has a right sibling r, then after moveing the hole up,
+-- | up means moves focus to a upper level,
+-- if the hole has a right sibling r, then after moving the hole up,
 -- the subtree attached to the hole becomes the siblings of r,
--- that's why Fork t r make sense here. but I think the c should also change?
+-- that's why Fork t r make sense here.
+-- also, the current context is L c r, and c means the context of L, or
+-- think of it as parent context
 up :: Loc a -> Loc a
 up (t, L c r) = (Fork t r, c)
 up (t, R l c) = (Fork l t, c)
