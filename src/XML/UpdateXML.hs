@@ -81,5 +81,10 @@ updateNodeInplace' xmlStr
               (x:_) -> case node x of
                          NodeElement (Element "f" attrs _) -> [NodeElement (Element "f" attrs [NodeContent "New content"])]
                          n' -> [n']
-          where cursors = (rootCursor $// element "d") >>= ($/ element "e") >>= ($/ element "f") -- ^ \x -> x $/ element "f"
+          where cursors = rootCursor $// element "d" &/ element "e" &/ element "f"
+                -- (rootCursor $// element "d") >>= ($/ element "e") >>= ($/ element "f") -- ^ \x -> x $/ element "f"
+
+deepSelect :: Cursor -> Axis -> [Cursor]
+deepSelect cur axis = cur $// axis
+
 

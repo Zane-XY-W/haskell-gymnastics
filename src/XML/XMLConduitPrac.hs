@@ -4,7 +4,7 @@ module XMLConduitPrac where
 
 import qualified Data.Map        as M
 import           Prelude         hiding (readFile, writeFile)
-import           Text.Hamlet
+import           Text.Hamlet.XML -- ^ this is from xml-hamlet package
 import           Text.XML
 
 main :: IO ()
@@ -24,7 +24,7 @@ main = do
 -- We'll turn out <document> into an XHTML document
 transform :: Element -> Element
 transform (Element _name attrs children) = Element "html" M.empty
-    [hamlet|
+    [xml|
       $doctype 5
       <html>
           <head> <title>
