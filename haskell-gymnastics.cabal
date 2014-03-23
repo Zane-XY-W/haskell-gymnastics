@@ -31,8 +31,8 @@ Library
                         hamlet >= 1.1.9.2,
                         xml-conduit >= 1.1.0.9,
                         system-filepath >= 0.4.8,
-                        HUnit >= 1.2.5.2
-
+                        HUnit >= 1.2.5.2,
+                        criterion >= 0.8.0.1
 Test-Suite spec
   Type:                 exitcode-stdio-1.0
   Default-Language:     Haskell2010
