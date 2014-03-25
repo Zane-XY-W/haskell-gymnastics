@@ -33,3 +33,8 @@ top t = (t, Top)
 up :: Loc a -> Loc a
 up (t, L c r) = (Fork t r, c)
 up (t, R l c) = (Fork l t, c)
+
+downLeft :: Loc a -> Loc a
+downLeft (lf @ Fork l' r', L c r ) = (l', L c r')
+downLeft (Fork l r, R r c ) = (l, c)
+
