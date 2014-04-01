@@ -1,6 +1,7 @@
 {-#LANGUAGE ScopedTypeVariables#-}
 module Barcode where
 import Data.Function
+import qualified Data.Map  as M
 import Data.Char
 import Data.Array
 import Data.Ix
@@ -192,6 +193,41 @@ bestLeft ps = sortBy compareWithoutParity
 bestRight :: [Run] -> [Parity (Score, Digit)]
 bestRight = map None . bestScores scaledRight
 
+chunkWith :: ([a] -> ([a], [a])) -> [a] -> [[a]]
+chunkWith _ [] = []
+chunkWith f xs = let (h,t) = f xs
+                 in h : chunkWith f t
 
+chunkOf :: Int -> [a] -> [[a]]
+chunkOf n = chunkWith (splitAt n)
+
+candidateDigits :: RunLength Bit -> [[Parity Digit]]
+candidateDigits ((_,One):_) = []
+candidateDigits rle | length rle < 59 = []
+                    | any null match = []
+                    | otherwise  = map (map (fmap snd)) match
+  where match = map bestLeft left ++ map bestRight right
+        left = chunkOf 4 . take 24 . drop 3 $ runLengths
+        right = chunkOf 4 . take 24 . drop 32 $ runLengths
+        runLengths = map fst rle
+
+type Map a = M.Map Digit [a]
+
+type DigitMap = Map Digit
+type ParityMap = Map (Parity Digit)
+
+insertMap :: Digit -> Digit -> [a] -> Map a -> Map a
+insertMap key digit v m = v `seq` M.insert key' v m
+  where key' = (key + digit) `mod` 10
+
+updateMap :: Parity Digit -- ^ new digit
+          -> Digit -- ^ existing key
+          -> [Parity Digit] -- ^ existing digit seqenence
+          -> ParityMap -- ^ map to update
+          -> ParityMap
+updateMap digit key seq = insertMap key (fromParity digit) (digit:seq)
+
+useDigit :: ParityMap -> ParityMap -> Parity Digit -> ParityMap
+useDigit old new digit = new `M.union` M.foldWithKey (updateMap digit) M.empty old
 
 
