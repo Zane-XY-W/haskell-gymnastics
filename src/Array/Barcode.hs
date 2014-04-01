@@ -23,9 +23,12 @@ mapEveryOther :: (a -> a) -> [a] -> [a]
 mapEveryOther f = zipWith ($) (cycle [f, id])
 
 -- | the last digit of the barcodes
+-- EAN check digit is calculated by multiply 3 to all the odd digit and
+-- then sum all the digits.
+-- The final digit of the result is subtracted from 10 to calculate the check digit (or left as is if already zero).
 checkDigit :: (Integral a) => [a] -> a
 checkDigit ds = 10 - (sum ds' `mod` 10) -- ^ evaluated from left to right
-  where ds' = mapEveryOther (*3) (reverse ds)
+  where ds' = mapEveryOther (*3) (reverse ds) -- ^ reverse ensures starting from odd digit
 
 -- | foldA for array isn't defined in stardard lib because there're
 -- multiple ways to fold two dimensional arrays, here is a fold for one
@@ -210,7 +213,7 @@ candidateDigits rle | length rle < 59 = []
         left = chunkOf 4 . take 24 . drop 3 $ runLengths
         right = chunkOf 4 . take 24 . drop 32 $ runLengths
         runLengths = map fst rle
-
+-- | In this map, the key is a check digit, and the value is a sequence that evaluates to this check digit.
 type Map a = M.Map Digit [a]
 
 type DigitMap = Map Digit
@@ -230,4 +233,38 @@ updateMap digit key seq = insertMap key (fromParity digit) (digit:seq)
 useDigit :: ParityMap -> ParityMap -> Parity Digit -> ParityMap
 useDigit old new digit = new `M.union` M.foldWithKey (updateMap digit) M.empty old
 
+finalDigits :: [[Parity Digit]] -> ParityMap
+finalDigits = foldl' incorporateDigits (M.singleton 0 [])
+            . mapEveryOther (map (fmap (*3)))
+
+firstDigit :: [Parity a] -> Digit
+firstDigit  = snd
+            . head
+            . bestScores scaledParity
+            . runLengths
+            . map parityBit
+            . take 6
+  where parityBit (Even _) = Zero
+        parityBit (Odd _) = One
+
+addFirstDigit :: ParityMap -> DigitMap
+addFirstDigit = M.foldWithKey updateFirst M.empty
+
+updateFirst :: Digit -> [Parity Digit] -> DigitMap -> DigitMap
+updateFirst key seq = insertMap key digit (digit:renormalize qes)
+  where renormalize = mapEveryOther (`div` 3) . map fromParity
+        digit = firstDigit qes
+        qes = reverse seq
+
+buildMap :: [[Parity Digit]] -> DigitMap
+buildMap = M.mapKeys (10 -)
+         . addFirstDigit
+         . finalDigits
+
+solve :: [[Parity Digit]] -> [[Digit]]
+solve [] = []
+solve xs = catMaybes $ map (addCheckDigit m) checkDigits
+  where checkDigits = map fromParity (last xs)
+        m = buildMap (init xs)
+        addCheckDigit m k = (++[k]) <$> M.lookup k m
 
