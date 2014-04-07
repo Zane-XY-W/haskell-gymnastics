@@ -32,14 +32,19 @@ Library
                         xml-conduit >= 1.1.0.9,
                         system-filepath >= 0.4.8,
                         HUnit >= 1.2.5.2,
+                        hastache < 0.6,
                         criterion >= 0.8.0.1,
                         xml-hamlet >= 0.4.0.6,
                         hsx >= 0.10.5,
                         text >= 1.1.0.1,
                         lens >= 4.0.5,
-                        array >= 0.4.0.1
-
+                        array >= 0.4.0.1,
+                        html-conduit >= 1.1.0.2,
+                        http-conduit >= 2.0.0.8,
+                        HTTP >= 4000.2.12,
+                        transformers >= 0.3.0.0
                         
+
 Test-Suite spec
   Type:                 exitcode-stdio-1.0
   Default-Language:     Haskell2010
