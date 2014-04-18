@@ -3,13 +3,6 @@ module SystemRandom where
 import Control.Monad.State.Strict
 import System.Random
 
-{-
-- The class Random defineds a series random functions, like random and
-- randomR, randomIO etc. For the type Random a, a is the random value type.
-- The class RandomGen provides a common interface to random number generators.
--
-- -}
-
 -- |
 -- StdGen: is an instance of RandomGen, is a global random number generator.
 type RandomState a = State StdGen a
@@ -32,11 +25,6 @@ getRandom = state random
 getTwoRandom :: Random a => RandomState (a, a)
 getTwoRandom = liftM2 (,) getRandomGeneral getRandomGeneral
 
--- |
--- getStdGen :: IO StdGen :  Gets the global random number generator.
--- setStdGen : Sets the global random number generator.
--- runState : unwrap a state monad, takes a State monad and initial state,
--- returns the result of the function and the new state.
 runTwoRandom :: IO (Int, Int)
 runTwoRandom = do
     currentState <- getStdGen
