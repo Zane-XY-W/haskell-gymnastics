@@ -1,0 +1,66 @@
+Name:                   haskell-gymnastics
+Version:                0.0.0
+Author:                 znw <nobody@blank.org >
+Maintainer:             znw <nobody@blank.org >
+License:                BSD3
+License-File:           LICENSE
+-- Synopsis:               
+-- Description:            
+Cabal-Version:          >= 1.10
+Build-Type:             Simple
+
+Library
+  Default-Language:     Haskell2010
+  HS-Source-Dirs:       src
+  GHC-Options:          -Wall
+  Exposed-Modules:      IO.ReadAndWrite,
+                        Regex.Glob,
+                        Regex.GlobRegex
+  Build-Depends:        base >= 4 && < 5,
+                        mtl >= 2.1.2,
+                        parsec >=3.1.3,
+                        filepath >=1.3.0.1,
+                        directory >=1.2.0.1,
+                        containers >=0.5.0 && <0.6,
+                        QuickCheck >=2.6 && <2.7,
+                        regex-pcre-builtin >= 0.94.4,
+                        time >= 1.4.0.1,
+                        bytestring >= 0.10.0.2,
+                        regex-compat >= 0.95.1,
+                        word8 >= 0.0.4,
+                        hamlet >= 1.1.9.2,
+                        xml-conduit >= 1.1.0.9,
+                        system-filepath >= 0.4.8,
+                        HUnit >= 1.2.5.2,
+                        hastache < 0.6,
+                        criterion >= 0.8.0.1,
+                        xml-hamlet >= 0.4.0.6,
+                        hsx >= 0.10.5,
+                        text >= 1.1.0.1,
+                        lens >= 4.0.5,
+                        array >= 0.4.0.1,
+                        html-conduit >= 1.1.0.2,
+                        http-conduit >= 2.0.0.8,
+                        HTTP >= 4000.2.12,
+                        transformers >= 0.3.0.0,
+                        random >= 1.0.1.1
+                        
+
+Test-Suite spec
+  Type:                 exitcode-stdio-1.0
+  Default-Language:     Haskell2010
+  Hs-Source-Dirs:       src
+                      , test
+  Ghc-Options:          -Wall
+  Main-Is:              Spec.hs
+  Build-Depends:        base,
+                        hspec,
+                        mtl >= 2.1.2,
+                        parsec >=3.1.3,
+                        filepath >=1.3.0.1,
+                        directory >=1.2.0.1,
+                        containers >=0.5.0 && <0.6,
+                        QuickCheck >=2.6 && <2.7
+Source-Repository head
+  Type:                 git
+--  Location:             
