@@ -28,12 +28,14 @@ tossCoin = do
 threeCoins' :: StdGen -> (Bool, Bool, Bool)
 threeCoins' = evalState $ liftM3 (,,) tossCoin tossCoin tossCoin
 
--- StdGen: is an instance of RandomGen, is a global random number generator.
-type RandomState a = State StdGen a
+
+type RandomState a = State StdGen a -- ^StdGen: is an instance of RandomGen, is a global random number generator.
 
 -- |
 -- using get and put to construct an stateful computation.
+-- @
 -- random :: (Random a, RandomGen g) => g -> (a, g)
+-- @
 getRandomGeneral :: (Random a) => RandomState a
 getRandomGeneral
   = get >>= \ g -> let (v, g') = random g in put g' >> return v
