@@ -23,16 +23,16 @@ countEntriesTrad path = do
 
 countEntries :: FilePath -> WriterT [(FilePath, Int)] IO ()
 countEntries path = do
-  contents <-  liftIO . listDirectory $ path  -- Lift a computation from the IO monad. 
+  contents <-  liftIO . listDirectory $ path  -- Lift a computation from the IO monad.
   tell [(path, length contents)]
   forM_ contents $ \name -> do
     let newName = path </> name
     isDir <- liftIO . doesDirectoryExist $ newName
     when isDir $ countEntries newName
-    
+
 -- stacking Monad Transformer
 data AppConfig = AppConfig {
-      cfgMaxDepth :: Int 
+      cfgMaxDepth :: Int
     } deriving (Show)
 
 data AppState = AppState {
