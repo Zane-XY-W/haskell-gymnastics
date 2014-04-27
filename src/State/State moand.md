@@ -56,9 +56,10 @@ class Monad m => MonadState s m | m -> s where
 ```
 ###get and put and modify###
 
-- `get` set the result value to the state and left the state unchanged, it's like the `return x`, they both don't touch the state, but return set the result to x.
+- `get` copies `s` to `a`, leaves `s` unchanged
+- `put s` copies new `s` to old `s` and set `a` to ()
+- `return x` sets the `a` to x, leaves `s` unchanged
 - because `get :: m s`, `m` is actually `State s`, a fully applied `m s` is like `StateT StdGen Identity StdGen`, so this is basically saying `get` copies `s` to `a`.
-- `put s` set the result value to () and set the state value to s
 - you perform state operation using `put`, then `get` the computed state out
 - before the computation completes, `a` is just a temp value, `put` sets `a` to `()` because the next `a` should be computed from the next `s`, not the previous `a`, and finally you copy `s` to `a` using `get`
 

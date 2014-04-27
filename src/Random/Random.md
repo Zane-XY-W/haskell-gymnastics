@@ -1,7 +1,5 @@
 # System.Random #
 
-
-
 - The class `Random` defineds a series random functions, like `random` and `randomR`, `randomIO` etc. For the type Random a, a is the random value type.
 - The class `RandomGen` provides a common interface to random number generators.
 -  `StdGen`: is an instance of `RandomGen`, is a global random number generator.
