@@ -33,7 +33,7 @@ getConfigNums
   = do content <- ask
        return (length content)
 
---|
+-- |
 -- local: Executes a computation in a modified environment
 calculateModifiedContentLen :: Reader String Int
 calculateModifiedContentLen = local ("Prefix " ++) getConfigNums
