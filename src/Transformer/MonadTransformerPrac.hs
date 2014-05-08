@@ -1,34 +1,13 @@
 module MonadTransformerPrac where
 
-import System.Directory (doesDirectoryExist, getDirectoryContents)
-import System.FilePath ((</>)) -- </> is an alias for combine
-import Control.Monad.Writer (WriterT, tell)
-import Control.Monad.Reader
-import Control.Monad.State
+import           Control.Monad.Reader
+import           Control.Monad.State
+import           System.Directory     (doesDirectoryExist, getDirectoryContents)
+import           System.FilePath      ((</>))
 
 listDirectory :: FilePath -> IO [String]
 listDirectory = liftM (filter notDots) . getDirectoryContents
     where notDots p = p /= "." && p /= ".."
-
-countEntriesTrad :: FilePath -> IO [(FilePath, Int)]
-countEntriesTrad path = do
-  contents <- listDirectory path
-  rest <- forM contents $ \name -> do
-            let newName = path </> name
-            isDir <- doesDirectoryExist newName
-            if isDir
-              then countEntriesTrad newName
-              else return []
-  return $ (path, length contents) : concat rest
-
-countEntries :: FilePath -> WriterT [(FilePath, Int)] IO ()
-countEntries path = do
-  contents <-  liftIO . listDirectory $ path  -- Lift a computation from the IO monad.
-  tell [(path, length contents)]
-  forM_ contents $ \name -> do
-    let newName = path </> name
-    isDir <- liftIO . doesDirectoryExist $ newName
-    when isDir $ countEntries newName
 
 -- stacking Monad Transformer
 data AppConfig = AppConfig {
@@ -44,8 +23,8 @@ type App = ReaderT AppConfig (StateT AppState IO)
 runApp :: App a -> Int -> IO (a, AppState)
 runApp k maxDepth =
     let config = AppConfig maxDepth
-        state = AppState 0
-    in runStateT (runReaderT k config) state
+        st = AppState 0
+    in runStateT (runReaderT k config) st
 
 constrainedCount :: Int -> FilePath -> App [(FilePath, Int)]
 constrainedCount curDepth path = do
@@ -62,8 +41,3 @@ constrainedCount curDepth path = do
                 constrainedCount newDepth newPath
               else return []
   return $ (path, length contents) : concat rest
-
-
-
-
-

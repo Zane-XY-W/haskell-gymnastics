@@ -1,4 +1,4 @@
-{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE ScopedTypeVariables #-}w
 module BetterPredicate where
 import           Control.Exception
 import           Control.Monad        (filterM)

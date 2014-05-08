@@ -4,18 +4,18 @@ import Control.Monad.Reader
 import Control.Monad.State
 import System.Directory
 import System.FilePath
- 
+
 data AppConfig = AppConfig {
-  cfgMaxDepth :: Int 
+  cfgMaxDepth :: Int
 }
 
 data AppState = AppState {
   stDeepestReached :: Int
 }
 
-type App = ReaderT AppConfig (StateT AppState IO) 
+type App = ReaderT AppConfig (StateT AppState IO)
 
-constrainedCount :: Int -> FilePath -> App [(FilePath, Int)]  
+constrainedCount :: Int -> FilePath -> App [(FilePath, Int)]
 constrainedCount curDepth path = do
   contents <- liftIO . getDirectoryContents $ path
   cfg <- ask
@@ -23,7 +23,7 @@ constrainedCount curDepth path = do
     let newPath = path </> name
     isDir <- liftIO . doesDirectoryExist $ newPath
     if ( isDir && curDepth < cfgMaxDepth cfg)
-      then do 
+      then do
         let newDepth = curDepth + 1
         st <- get
         when ( stDeepestReached st < newDepth) $ put st { stDeepestReached = newDepth }
