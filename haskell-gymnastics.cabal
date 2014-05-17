@@ -43,7 +43,10 @@ Library
                         http-conduit >= 2.0.0.8,
                         HTTP >= 4000.2.12,
                         transformers >= 0.3.0.0,
-                        random >= 1.0.1.1
+                        random >= 1.0.1.1,
+                        zlib >= 0.5.4.1,
+                        readline >= 1.0.3.0
+
                         
 
 Test-Suite spec
